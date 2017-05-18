@@ -1,0 +1,52 @@
+body {
+	padding: 40px;
+	background: darkslateblue !important;
+	color:white !important;
+}
+
+.box {
+	margin: 20px 0px 0px 0px !important;
+	background: #2b303b;
+	color: white;
+	padding-left: 40px;
+}
+
+.new {
+	border-right: 10px solid orange;
+}
+
+.old {
+	border-right: 10px solid silver;
+}
+
+.done {
+	border-right: 10px solid #5cb85c;
+}
+
+.heading {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 150%;
+	font-weight: bold;
+	font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif;
+}
+
+blockquote {
+	font-family: "Lucida Bright",Georgia,serif;
+}
+
+.glyph {
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px !important;
+}
+
+.last {
+	margin-bottom: 20px;
+	color : silver;
+	font-family: Copperplate,"Copperplate Gothic Light",fantasy;
+}
+
+form p {
+	color: silver;
+}
