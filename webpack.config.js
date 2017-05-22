@@ -62,7 +62,7 @@ if(debug){
   // production build
   plugins.push(
     new webpack.DefinePlugin({'process.env': {'NODE_ENV': JSON.stringify('production')}}),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
+    new webpack.optimize.UglifyJsPlugin({ minimize: true })
     
   );
 
@@ -83,6 +83,8 @@ module.exports = {
   devtool: debug ? "inline-sourcemap" : false,
 
   entry: entry,
+
+  target: 'electron-renderer',
 
   module: {
     loaders: [

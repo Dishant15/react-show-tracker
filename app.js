@@ -3,6 +3,7 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const url = require('url')
+const open = require('open')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -15,7 +16,7 @@ function createWindow () {
   // open external urls ( with target="_blank" ) in user browser
   mainWindow.webContents.on('new-window', function(e, url) {
     e.preventDefault();
-    require('shell').openExternal(url);
+    open(url);
   });
 
   // and load the index.html of the app.

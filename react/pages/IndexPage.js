@@ -1,11 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Rx from 'rxjs/Rx';
+import {Route, Link} from 'react-router-dom'
+import Rx from 'rxjs/Rx'
+
+import store from '~/store'
+import {setData} from '~/utils'
 
 
 @connect((store) => {
 	return {
-		data : store.test.somedata,
+		data : store.seriesList,
 	}
 })
 export default class IndexPage extends React.Component {
@@ -22,6 +26,10 @@ export default class IndexPage extends React.Component {
 		})
 	}
 
+	saveFile(){
+		setData()
+	}
+
 	test(){
 		const set = new Set([1, 2, 3])
 		const _this = this
@@ -35,17 +43,19 @@ export default class IndexPage extends React.Component {
 		  }
 		}, {sum: 0, count: 0})
 		.map(o => o.sum / o.count)
-		.subscribe(x => console.log(x),
-		           error => console.error(error),
-		           () => console.log('done'));
+		.subscribe(
+			x => console.log(x),
+		    error => console.error(error),
+		    () => console.log('done')
+		);
 	}
 
 	render() {
 		return (
 			<div class='text-center'>
-				<h1 class='text-warning'>This is asldf amazing IndexPage</h1>
-				<p>{this.props.data}</p>
-				<button class='btn btn-success' onClick={this.test}> test Data </button>
+				<h1> This is IndexPage Where we test things </h1>
+				<button class='btn btn-success' onClick={this.changeState}> Change Data </button>
+				<button class='btn btn-danger' onClick={this.saveFile}> Save Data </button>
 			</div>
 		)
 	}

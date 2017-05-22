@@ -1,21 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import {BrowserRouter, NavLink, Switch, Route} from 'react-router-dom'
 
 import { Provider } from "react-redux"
-import { persistStore } from 'redux-persist'
 
+import HomePage from '~/pages/HomePage'
 import IndexPage from '~/pages/IndexPage'
+import AddSeriesPage from '~/pages/AddSeriesPage'
+import EditSeriesPage from '~/pages/EditSeriesPage'
+import Navbar from '~/components/Navbar'
 import store from './store'
 
 const routes = (
-	<Router onUpdate={() => window.scrollTo(0, 0)} >
-		<Route path ='/' component={IndexPage} />
-	</Router>
+	<BrowserRouter >
+		<div class='container'>
+			<Navbar />
+			<Switch>
+				<Route path ='/home' component={IndexPage} />
+				<Route exact={true} path ='/add' component={AddSeriesPage} />
+				<Route exact={true} path ='/edit/:name' component={EditSeriesPage} />
+				<Route path ='' component={HomePage} />				
+			</Switch>
+		</div>
+	</BrowserRouter>
 )
 
 class AppProvider extends React.Component {
@@ -29,10 +36,11 @@ class AppProvider extends React.Component {
 	}
 
 	componentWillMount(){
-		persistStore(store, {whitelist: ['test',]}, () => {
-			console.log(store.getState())
-			this.setState({ rehydrated: true })
-		})
+		this.setState({ rehydrated: true })
+	}
+
+	componentWillUnmount(){
+		
 	}
 
 	render() {
