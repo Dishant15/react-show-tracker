@@ -1,6 +1,28 @@
+$bg-color: darkslateblue;
+
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-ms-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+@mixin box-shadow($value) {
+	-webkit-box-shadow: $value;
+	-moz-box-shadow: $value;
+	box-shadow: $value;
+}
+
+@import 'navbar';
+
+#body-content {
+	margin-top: 70px;
+}
+
 body {
 	padding: 40px;
-	background: darkslateblue !important;
+	background: $bg-color !important;
 	color:white !important;
 }
 
@@ -9,10 +31,11 @@ body {
 	background: #2b303b;
 	color: white;
 	padding-left: 40px;
+	@include transition(all .2s ease-in);
 }
 
 .loading {
-	border-right: 10px solid red;
+	border-right: 10px solid #a02a2a;
 }
 
 .new {

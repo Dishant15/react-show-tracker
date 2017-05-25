@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, NavLink, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, NavLink, Switch, Redirect, Route} from 'react-router-dom'
 
 import { Provider } from "react-redux"
 
 import HomePage from '~/pages/HomePage'
-import IndexPage from '~/pages/IndexPage'
+// import IndexPage from '~/pages/IndexPage'
 import AddSeriesPage from '~/pages/AddSeriesPage'
 import EditSeriesPage from '~/pages/EditSeriesPage'
 import Navbar from '~/components/Navbar'
@@ -16,10 +16,11 @@ const routes = (
 		<div class='container'>
 			<Navbar />
 			<Switch>
-				<Route path ='/home' component={IndexPage} />
-				<Route exact={true} path ='/add' component={AddSeriesPage} />
-				<Route exact={true} path ='/edit/:name' component={EditSeriesPage} />
-				<Route path ='' component={HomePage} />				
+				<Route path ='/home' component={HomePage} />
+				<Route path ='/add' component={AddSeriesPage} />
+				<Route path ='/edit/:name' component={EditSeriesPage} />
+				{/*<Route path ='/test' component={IndexPage} />*/}
+				<Route path ='' render={() => <Redirect to='/home' />} />
 			</Switch>
 		</div>
 	</BrowserRouter>

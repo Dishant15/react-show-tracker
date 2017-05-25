@@ -31,7 +31,7 @@ export default class EditSeriesPage extends React.Component {
 		// handle validations here
 
 		this.props.dispatch(editSeries(this.series_name, this.state))
-		this.props.history.push('')
+		this.props.history.push('/home')
 	}
 
 	componentWillUnmount(){
@@ -47,8 +47,8 @@ export default class EditSeriesPage extends React.Component {
 	render() {
 		return (
 			<div key='edit'>
-				<form action="" onSubmit={this.editSeries} class="text-center">
-					<h3> Edit {this.series_name} </h3>
+				<form action="" onSubmit={this.editSeries}>
+					<h3 class="text-center"> Edit {this.series_name} </h3>
 				  <div class="form-group">
 				    <label>Your Current Marker</label>
 				    <input type="text" class="form-control"
@@ -74,9 +74,9 @@ export default class EditSeriesPage extends React.Component {
 				    	value={this.state.dl_url}
 				    />
 				  </div>
-				  <button type="submit" class="btn btn-default" onClick={this.editSeries}>
-				  	Edit Show
-				  </button>
+					  <button type="submit" class="btn btn-warning" onClick={this.editSeries} style={{margin:'20px'}}>
+					  	<span class="glyphicon glyphicon-pencil" aria-hidden="true" />
+					  </button>
 				</form>
 			</div>
 		)

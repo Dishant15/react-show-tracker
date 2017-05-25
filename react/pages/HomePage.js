@@ -5,10 +5,12 @@ import {Link} from 'react-router-dom'
 import {updateSeries, seenThisSeries, deleteThisSeries} from '~/actions'
 import {setData} from '~/utils'
 import has from 'lodash/has'
+import store from '~/store'
 
 @connect((store) => {
 	return {
 		series_list: store.seriesList.series_names,
+		series_data: store.seriesList.series_data,
 	}
 })
 export default class HomePage extends React.Component {
@@ -20,7 +22,11 @@ export default class HomePage extends React.Component {
 			<div>
 				{
 					this.props.series_list.map( (name, ind) => {
-						return <ShowBlock key={ind} show_name={name} />
+						return <ShowBlock 
+									key={ind} 
+									show_name={name} 
+									show={this.props.series_data[name]} 
+								/>
 					} )
 				}
 			</div>
@@ -29,11 +35,7 @@ export default class HomePage extends React.Component {
 }
 
 
-@connect((store) => {
-	return {
-		series_data: store.seriesList.series_data,
-	}
-})
+@connect(null)
 class ShowBlock extends React.Component {
 
 	constructor(){
@@ -48,18 +50,10 @@ class ShowBlock extends React.Component {
 	}
 
 	componentDidMount(){
-		const show = this.props.series_data[this.props.show_name]
-		// console.log(show)
+		const {show} = this.props
+		
 		if(!show.fetched) {
 			this.props.dispatch(updateSeries(show.fetch_url, show.name))
-		}
-	}
-
-	componentWillUnmount(){
-		if(!has(this.props.series_data, this.props.show_name)){
-			// this show was removed from data
-			// delete if from file system too
-			setData()
 		}
 	}
 
@@ -70,12 +64,16 @@ class ShowBlock extends React.Component {
 	}
 
 	deleteThis(){
-		this.props.dispatch(deleteThisSeries(this.props.show_name))
+		if(window.confirm('Are you sure you want to remove this series from the watch list ?') ){
+			this.props.dispatch(deleteThisSeries(this.props.show_name))
+			// save the removed series data
+			setData()
+		}
 	}
 
 	render(){
 
-		const show = this.props.series_data[this.props.show_name]
+		const {show} = this.props
 		const show_banner = `${show.season_no}.${show.ep_no} - ${show.ep_name}`
 		let borderClass;
 		// side brorder color choice

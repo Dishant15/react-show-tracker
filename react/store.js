@@ -10,10 +10,6 @@ const reducers = combineReducers({
 
 const defaultData = { 
 	seriesList : {
-		// dummy data
-		fetching : false,
-		fetched : false,
-		error: false,
 		series_names : [],
 		series_data: {}
 	}
@@ -26,7 +22,7 @@ const data = getData( defaultData )
 const store = createStore( reducers, data, applyMiddleware(thunk) );
 
 // store.subscribe(()=>{
-// 	console.log("Store Updated :", store.getState().seriesList.series_data);
+// 	console.log("Store Updated :", store.getState().seriesList);
 // });
 
 export default store;

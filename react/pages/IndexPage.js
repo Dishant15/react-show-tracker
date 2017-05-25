@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Route, Link} from 'react-router-dom'
+import sortBy from 'lodash/sortBy'
 import Rx from 'rxjs/Rx'
 
 import store from '~/store'
@@ -27,7 +28,15 @@ export default class IndexPage extends React.Component {
 	}
 
 	saveFile(){
-		setData()
+		// setData()
+		let a = sortBy([
+			{b : true, a : 2},
+			{b : false, a : 1},
+			{b : true, a : 4},
+			{b : false, a : 6},
+			{b : true, a : 0},
+		], ['-b', 'a'])
+		console.log(a)
 	}
 
 	test(){

@@ -23,7 +23,7 @@ export default class AddSeriesPage extends React.Component {
 		// no '/' or special characters in Name
 
 		store.dispatch(addNewSeries(this.state))
-		this.props.history.push('')
+		this.props.history.push('/home')
 	}
 
 	handleChange(event) {
@@ -35,7 +35,7 @@ export default class AddSeriesPage extends React.Component {
 	render() {
 		return (
 			<div key='add'>
-				<form action="" onSubmit={this.addSeries} class="text-center">
+				<form action="" onSubmit={this.addSeries}>
 				  <div class="form-group">
 				    <label>Show Name</label>
 				    <input type="text" class="form-control"
@@ -61,9 +61,9 @@ export default class AddSeriesPage extends React.Component {
 				    	value={this.state.dl_url}
 				    />
 				  </div>
-				  <button type="submit" class="btn btn-default" onClick={this.addSeries}>
-				  	Add Show
-				  </button>
+					  <button type="submit" class="btn btn-success" onClick={this.addSeries} style={{margin:'20px'}}>
+					  	<span class="glyphicon glyphicon-plus" aria-hidden="true" />
+					  </button>
 				</form>
 			</div>
 		)

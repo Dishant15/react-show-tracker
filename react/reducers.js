@@ -1,11 +1,9 @@
 import difference from 'lodash/difference'
 
 const INIT_SERIES_LIST = {
-	// dummy data
-	fetching : false,
-	fetched : false,
-	error: false,
+	// list of series to render them
 	series_names : ['The Flash'],
+	// flat data map of each series by their names
 	series_data: {
 		'The Flash' : {
 			"name":"The Flash",
@@ -81,7 +79,6 @@ export const seriesReducer = (state=INIT_SERIES_LIST, action) => {
 		}
 
 		case "EDIT_SERIES" : {
-			console.log('edit', action.payload.name)
 			let series_data = {...state.series_data}
 			series_data[action.payload.name] = { 
 				...series_data[action.payload.name],

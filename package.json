@@ -4,11 +4,13 @@
   "description": "Show Tracker using electron, webpack(es6), react, rxJs, redux",
   "main": "app.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron app.js",
     "webpack": "node webpack_server.js",
     "webpack-prod-watch": "NODE_ENV=production webpack --watch",
     "webpack-prod": "NODE_ENV=production webpack",
-    "webpack-stats" : "NODE_ENV=production webpack --json > stats.json"
+    "webpack-stats": "NODE_ENV=production webpack --json > stats.json",
+    "build": "electron-packager . SeriesTrackerPro",
+    "package" : "asar pack SeriesTrackerPro-darwin-x64/SeriesTrackerPro.app/Contents/Resources/app SeriesTrackerPro-darwin-x64/SeriesTrackerPro.app/Contents/Resources/app.asar"
   },
   "author": "Dishant Chavda",
   "license": "MIT",
@@ -25,7 +27,6 @@
     "cheerio": "^0.22.0",
     "css-loader": "^0.28.1",
     "csso-loader": "^0.3.1",
-    "electron-prebuilt": "^1.4.13",
     "extract-text-webpack-plugin": "^2.1.0",
     "fs": "^0.0.1-security",
     "node-sass": "^4.5.2",
@@ -41,8 +42,13 @@
     "request": "^2.81.0",
     "rxjs": "^5.4.0",
     "sass-loader": "0.5",
-    "style-loader": "^0.17.0",
-    "webpack": "^2.5.0",
+    "style-loader": "^0.17.0"
+  },
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "electron-packager": "^8.7.0",
+    "electron-prebuilt": "^1.4.13",
+    "webpack": "^2.6.0",
     "webpack-dev-server": "^2.4.5"
   }
 }

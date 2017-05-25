@@ -1,0 +1,34 @@
+#menubar {
+	position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    height: 90px;
+	text-align: center;
+	padding-top: 20px;
+	background: $bg-color;
+	z-index: 10;
+	@include box-shadow(0 20px 10px -10px black);
+
+	.navbox {
+		line-height: 25px;
+		padding-bottom: 10px;
+	}
+
+	a, 
+	a:focus, 
+	a:active, 
+	a:visited {
+		color: white;
+		@include transition(border-bottom .2s ease-in);
+		border-bottom: 2px $bg-color solid;
+		text-decoration: none;
+	}
+
+	a:hover,
+	a.active {
+		text-decoration: none;
+		color: white;
+		border-bottom: 2px white solid;
+	}
+}
